@@ -17,7 +17,9 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->unique()->randomElement(['Laravel Mousepad', 'Laravel Blanket', 'Laravel Shirt', 'Laravel Hat', 'Laravel Mug']),
+            'description' => $this->faker->paragraph(2),
+            'price' => $this->faker->numberBetween(5_00, 45_00),
         ];
     }
 }
