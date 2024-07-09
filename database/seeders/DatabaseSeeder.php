@@ -26,5 +26,9 @@ class DatabaseSeeder extends Seeder
                     ))
             )
             ->create();
+
+        User::factory()->create([
+            'email' => 'rui@dudev.pt'
+        ]);
     }
 }
