@@ -14,7 +14,7 @@
             </thead>
             <tbody>
             @foreach($this->items as $item)
-                <tr>
+                <tr wire:key="cart-item-{{ $item->id }}">
                     <td>{{ $item->product->name }}</td>
                     <td>{{ $item->product->price }}</td>
                     <td>{{ $item->variant->color }}</td>
@@ -49,15 +49,16 @@
                 </tr>
             @endforeach
             </tbody>
+
             <tfoot>
-                <tr>
-                    <td colspan="5" class="text-right font-medium">
-                        Total
-                    </td>
-                    <td class="font-medium text-right">
-                        {{ $this->cart->total }}
-                    </td>
-                </tr>
+            <tr>
+                <td colspan="5" class="text-right font-medium">
+                    Total
+                </td>
+                <td class="font-medium text-right">
+                    {{ $this->cart->total }}
+                </td>
+            </tr>
             </tfoot>
         </table>
     </div>
@@ -66,11 +67,12 @@
 
         <div class="bg-white rounded-lg shadow p-5 col-span-1">
             @guest
-                <p>Please <a href="{{ route('register') }}" class="underline">register</a> or <a href="{{ route('login') }}" class="underline">login</a> to continue</p>
+                <p>Please <a href="{{ route('register') }}" class="underline">register</a> or <a
+                        href="{{ route('login') }}" class="underline">login</a> to continue</p>
             @endguest
 
             @auth
-                    <x-button wire:click="checkout">Checkout</x-button>
+                <x-button wire:click="checkout">Checkout</x-button>
             @endauth
         </div>
 

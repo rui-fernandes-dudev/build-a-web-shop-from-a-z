@@ -11,7 +11,6 @@ class Product extends Component
     use InteractsWithBanner;
 
     public $productId;
-
     public $variant;
 
     public $rules = [
@@ -37,7 +36,6 @@ class Product extends Component
         );
 
         $this->banner('Your product has been added to your cart');
-
         $this->dispatch('productAddedToCart');
     }
 
